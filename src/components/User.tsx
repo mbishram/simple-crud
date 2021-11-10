@@ -26,7 +26,11 @@ export function User({ data: { id, name, nip, email }, setData }: Props) {
 			<p className="mb-1 text-gray-400">{nip || "NIP is Missing"}</p>
 			<div className="flex gap-2">
 				<Link href={`/${id}/edit`}>
-					<a>
+					<a
+						onClick={(event) => {
+							event.stopPropagation();
+						}}
+					>
 						<Button small>Edit</Button>
 					</a>
 				</Link>
