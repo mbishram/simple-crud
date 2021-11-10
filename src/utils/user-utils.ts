@@ -26,20 +26,39 @@ export class UserUtils {
 			data: data,
 		};
 	}
+	static getUser(userId: number): CRUDReturnValue {
+		const user = data.filter((user) => user.id === userId);
 
-	static deleteUser(userId: number): CRUDReturnValue {
-		const index = data.findIndex((user) => user.id === userId);
-		data.splice(index, 1);
-
-		if (index) {
+		if (user.length) {
 			return {
 				success: true,
-				message: `User has been deleted!`,
+				message: `User found!`,
+				data: user,
 			};
 		} else {
 			return {
 				success: false,
 				message: `User did not exist!`,
+				data: user,
+			};
+		}
+	}
+
+	static deleteUser(userId: number): CRUDReturnValue {
+		const index = data.findIndex((user) => user.id === userId);
+
+		if (index !== -1) {
+			data.splice(index, 1);
+			return {
+				success: true,
+				message: `User has been deleted!`,
+				data: [...data],
+			};
+		} else {
+			return {
+				success: false,
+				message: `User did not exist!`,
+				data: [...data],
 			};
 		}
 	}

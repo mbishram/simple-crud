@@ -1,7 +1,13 @@
-import { User } from "@/types/user";
+import { User as UserType } from "@/types/user";
 import { Button } from "@/components/Button";
+import { UserUtils } from "@/utils/user-utils";
 
-export function User({ data: { id, name, nip, tlp, email } }: Props) {
+export function User({ data: { id, name, nip, tlp, email }, setData }: Props) {
+	const handleDelete = (userId: number) => () => {
+		const res = UserUtils.deleteUser(userId);
+		setData(res.data);
+	};
+
 	return (
 		<article className="bg-white p-6 rounded-xl shadow-lg flex flex-col gap-2">
 			<div>
@@ -26,7 +32,7 @@ export function User({ data: { id, name, nip, tlp, email } }: Props) {
 			</div>
 			<div className="grid grid-cols-2 gap-4 mt-2">
 				<Button fullWidth>Ubah</Button>
-				<Button fullWidth color="danger">
+				<Button fullWidth color="danger" onClick={handleDelete(id)}>
 					Hapus
 				</Button>
 			</div>
@@ -35,5 +41,6 @@ export function User({ data: { id, name, nip, tlp, email } }: Props) {
 }
 
 type Props = {
-	data: User;
+	data: UserType;
+	setData: Function;
 };
