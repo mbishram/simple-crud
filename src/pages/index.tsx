@@ -1,12 +1,20 @@
 import Head from "next/head";
+import { MainLayout } from "@/layouts/MainLayout";
+import { User } from "@/components/User";
+import { UserUtils } from "@/utils/user-utils";
 
 export default function Home() {
 	return (
-		<div>
+		<MainLayout>
 			<Head>
-				<title>{process.env.NEXT_PUBLIC_APP_NAME} - Home</title>
+				<title>Home - {process.env.NEXT_PUBLIC_APP_NAME}</title>
 			</Head>
-			<div className="p-10 bg-red-400">Test Lorem</div>
-		</div>
+			<h2 className="text-5xl font-bold text-gray-800 mb-8">All User</h2>
+			<div className="grid sm:grid-cols-2 grid-cols-1 gap-6">
+				{UserUtils.getAllUser().map((user, index) => (
+					<User key={`user-${index}`} data={user} />
+				))}
+			</div>
+		</MainLayout>
 	);
 }
