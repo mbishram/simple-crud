@@ -4,13 +4,22 @@ import { UserUtils } from "@/utils/user-utils";
 import { FormEvent, useState } from "react";
 import { User } from "@/components/User";
 import { Input } from "@/components/Input";
+import { Pagination } from "@/components/Pagination";
 
 export default function Home() {
 	const [allData, setAllData] = useState(UserUtils.getAllUser().data);
+	const [currentPage, setCurrentPage] = useState(1);
+	const userPerPage = 5;
+
+	const indexOfLastUser = currentPage * userPerPage;
+	const indexOfFirstUser = indexOfLastUser - userPerPage;
+	const currentUser = allData.slice(indexOfFirstUser, indexOfLastUser);
 
 	const handleSearch = (event: FormEvent<HTMLInputElement>) => {
 		setAllData(UserUtils.searchUser(event.currentTarget.value).data);
 	};
+
+	const changePagination = (pageNumber: number) => setCurrentPage(pageNumber);
 
 	return (
 		<MainLayout>
@@ -27,7 +36,7 @@ export default function Home() {
 			</div>
 			<div className="grid gap-6">
 				{allData.length ? (
-					allData?.map((user, index) => (
+					currentUser?.map((user, index) => (
 						<User
 							key={`user-${index}`}
 							data={user}
@@ -38,6 +47,13 @@ export default function Home() {
 					<p>User is empty!</p>
 				)}
 			</div>
+			<Pagination
+				total={allData.length}
+				userPerPage={userPerPage}
+				currentPage={currentPage}
+				changePagination={changePagination}
+				className="mt-8"
+			/>
 		</MainLayout>
 	);
 }
