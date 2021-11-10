@@ -5,7 +5,7 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 export default class CustomDocument extends Document {
 	render() {
 		return (
-			<Html>
+			<Html className="bg-gray-100">
 				<Head>
 					<meta
 						name="description"
