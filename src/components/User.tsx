@@ -1,6 +1,7 @@
 import { User as UserType } from "@/types/user";
 import { Button } from "@/components/Button";
 import { UserUtils } from "@/utils/user-utils";
+import Link from "next/link";
 
 export function User({ data: { id, name, nip, tlp, email }, setData }: Props) {
 	const handleDelete = (userId: number) => () => {
@@ -31,9 +32,13 @@ export function User({ data: { id, name, nip, tlp, email }, setData }: Props) {
 				<p>{email || "Email is Missing"}</p>
 			</div>
 			<div className="grid grid-cols-2 gap-4 mt-2">
-				<Button fullWidth>Ubah</Button>
+				<Link href={`/${id}/edit`}>
+					<a>
+						<Button fullWidth>Edit</Button>
+					</a>
+				</Link>
 				<Button fullWidth color="danger" onClick={handleDelete(id)}>
-					Hapus
+					Delete
 				</Button>
 			</div>
 		</article>
