@@ -16,14 +16,18 @@ export default function Home() {
 				<title>Home - {process.env.NEXT_PUBLIC_APP_NAME}</title>
 			</Head>
 			<h2 className="text-5xl font-bold text-gray-800 mb-8">All User</h2>
-			<div className="grid sm:grid-cols-2 grid-cols-1 gap-6">
-				{allData?.map((user, index) => (
-					<User
-						key={`user-${index}`}
-						data={user}
-						setData={handleSetAllData}
-					/>
-				))}
+			<div className="grid gap-6">
+				{allData.length ? (
+					allData?.map((user, index) => (
+						<User
+							key={`user-${index}`}
+							data={user}
+							setData={handleSetAllData}
+						/>
+					))
+				) : (
+					<p>User is empty!</p>
+				)}
 			</div>
 		</MainLayout>
 	);
