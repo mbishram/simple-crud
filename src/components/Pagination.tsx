@@ -13,7 +13,6 @@ export function Pagination({
 	for (let i = 1; i <= Math.ceil(total / userPerPage); i++) {
 		pageNumbers.push(i);
 	}
-	console.log(pageNumbers);
 
 	return (
 		<nav {...props}>
