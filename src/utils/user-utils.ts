@@ -26,6 +26,7 @@ export class UserUtils {
 			data: data,
 		};
 	}
+
 	static getUser(userId: number): CRUDReturnValue {
 		const user = data.filter((user) => user.id === userId);
 
@@ -44,11 +45,32 @@ export class UserUtils {
 		}
 	}
 
+	static editUser(userData: User): CRUDReturnValue {
+		const index = data.findIndex((user) => user.id === userData.id);
+
+		if (index !== -1) {
+			data[index] = userData;
+
+			return {
+				success: true,
+				message: `User has been edited!`,
+				data: [...data],
+			};
+		} else {
+			return {
+				success: false,
+				message: `User did not exist!`,
+				data: [...data],
+			};
+		}
+	}
+
 	static deleteUser(userId: number): CRUDReturnValue {
 		const index = data.findIndex((user) => user.id === userId);
 
 		if (index !== -1) {
 			data.splice(index, 1);
+
 			return {
 				success: true,
 				message: `User has been deleted!`,
