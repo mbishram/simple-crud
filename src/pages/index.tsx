@@ -11,7 +11,7 @@ export default function Home() {
 			</Head>
 			<h2 className="text-5xl font-bold text-gray-800 mb-8">All User</h2>
 			<div className="grid sm:grid-cols-2 grid-cols-1 gap-6">
-				{UserUtils.getAllUser().map((user, index) => (
+				{UserUtils.getAllUser().data?.map((user, index) => (
 					<User key={`user-${index}`} data={user} />
 				))}
 			</div>

@@ -15,7 +15,7 @@ export class UserUtils {
 		return {
 			success: true,
 			message: `User ${user.name} has been added!`,
-			data: user,
+			data: [user],
 		};
 	}
 
