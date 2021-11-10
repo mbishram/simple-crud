@@ -53,6 +53,7 @@ export default function Edit() {
 								))}
 
 							<Input
+								label="Name"
 								placeholder="Name"
 								name="name"
 								id="name"
@@ -61,6 +62,7 @@ export default function Edit() {
 								value={values.name}
 							/>
 							<Input
+								label="NIP"
 								placeholder="NIP"
 								name="nip"
 								id="nip"
@@ -69,6 +71,7 @@ export default function Edit() {
 								value={values.nip}
 							/>
 							<Input
+								label="Telephone"
 								placeholder="Telephone"
 								name="tlp"
 								id="tlp"
@@ -77,6 +80,7 @@ export default function Edit() {
 								value={values.tlp}
 							/>
 							<Input
+								label="Email"
 								placeholder="Email"
 								name="email"
 								id="email"
