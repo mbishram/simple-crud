@@ -3,14 +3,15 @@ import { HTMLProps } from "react";
 export function Input({
 	className,
 	placeholder,
+	label,
 	id,
 	...props
 }: HTMLProps<HTMLInputElement>) {
 	return (
 		<div className={className}>
-			{placeholder && (
+			{label && (
 				<label htmlFor={id} className="block mb-2 text-gray-400">
-					{placeholder}
+					{label}
 				</label>
 			)}
 			<input

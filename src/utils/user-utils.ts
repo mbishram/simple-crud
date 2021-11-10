@@ -96,7 +96,7 @@ export class UserUtils {
 
 		return {
 			success: true,
-			message: `User did not exist!`,
+			message: `User has been found!`,
 			data: filteredData,
 		};
 	}

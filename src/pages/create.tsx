@@ -45,6 +45,7 @@ export default function Create() {
 							))}
 
 						<Input
+							label="Name"
 							placeholder="Name"
 							name="name"
 							id="name"
@@ -53,6 +54,7 @@ export default function Create() {
 							value={values.name}
 						/>
 						<Input
+							label="NIP"
 							placeholder="NIP"
 							name="nip"
 							id="nip"
@@ -61,6 +63,7 @@ export default function Create() {
 							value={values.nip}
 						/>
 						<Input
+							label="Telephone"
 							placeholder="Telephone"
 							name="tlp"
 							id="tlp"
@@ -69,6 +72,7 @@ export default function Create() {
 							value={values.tlp}
 						/>
 						<Input
+							label="Email"
 							placeholder="Email"
 							name="email"
 							id="email"
